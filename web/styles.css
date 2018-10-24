@@ -1,0 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Material+Icons);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+* {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+header.material-header.material-header {
+    background-color: #5F4B8B;
+}

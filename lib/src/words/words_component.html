@@ -1,0 +1,45 @@
+<ul class="words">
+    <div class="container">
+        <div>
+            <material-input [ngModel]="searchString" (ngModelChange)="onKey($event)" label="Search for words: " floatingLabel style="width:80%">
+            </material-input>
+            <material-fab *ngIf="button" (click)="gotoAddDetail()" raised class="red">
+                <material-icon icon="add"></material-icon>
+            </material-fab>
+            <material-fab *ngIf="!button" (click)="gotoAddDetail()" mini raised class="redMin">
+                <material-icon icon="add"></material-icon>
+            </material-fab>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <table style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)" class="table table-hover sortable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Original</th>
+                                <th scope="col"><material-icon size="x-large" icon="record_voice_over"></material-icon></th>
+                                <th scope="col">{{language}}</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let word of words"
+                                [class.selected]="word === selectedWord" role="button">
+                                <td (click)="gotoDetail(word)">{{word.wordEnglish}}</td>
+                                <td (click)="gotoDetail(word)">{{word.wordPinyin}}</td>
+                                <td (click)="gotoDetail(word)">{{word.wordChinese}}</td>
+                                <td class="action">
+                                    <material-icon (click)="delete(word)" class="bin" size="x-large" icon="delete_forever"></material-icon>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</ul>
+
+<p></p>
+
+<word-detail [word]="selectedWord"></word-detail>

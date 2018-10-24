@@ -1,0 +1,24 @@
+@import 'package:angular_components/css/material/material';
+@import 'package:angular_components/material_chips/mixins';
+
+div.control-bar {
+    margin: $mat-grid;
+}
+
+.left-icon-bg material-icon {
+    color: $mat-white;
+    fill: $mat-white;
+}
+
+.clickable {
+    @include material-chips-clickable();
+}
+
+.dense {
+    @include chips-dense-theme();
+}
+
+.textm {
+    margin-bottom: 10px;
+    margin-top: 35px;
+}

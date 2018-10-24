@@ -1,0 +1,58 @@
+ul {
+    list-style: none;
+    padding-left: 0;
+    padding-top: 10px;
+}
+
+li {
+    line-height: 3em;
+}
+
+li:hover {
+    background-color: #EEEEEE;
+}
+
+li material-checkbox {
+    vertical-align: middle;
+}
+
+li material-fab {
+    float: right;
+    vertical-align: middle;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.red {
+    color: white;
+    background-color: #3f51b5;
+}
+
+.red:hover {
+    background-color: #354497;
+}
+
+.redMin {
+    color:#3f51b5;
+}
+
+.sortable td {
+    cursor: pointer;
+}
+
+table .action
+{
+    width:auto;
+    text-align:right;
+    white-space: nowrap
+}
+
+.bin {
+    color: #b20000
+}
+
+.bin:hover {
+    color: #ff0000;
+}

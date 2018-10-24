@@ -1,0 +1,22 @@
+<div class="container">
+    <div *ngIf="word != null">
+        <material-icon (click)="goBack()" style="color: black; margin: 15px; cursor: pointer" icon="arrow_back"></material-icon>
+        <material-input [(ngModel)]="word.wordEnglish" (keyup.enter)="save()" label="Original " autoFocus floatingLabel
+                        style="width:100%">
+        </material-input>
+        <material-input [(ngModel)]="word.wordChinese" (keyup.enter)="save()" label="${label}" floatingLabel
+                        style="width:100%">
+        </material-input>
+        <material-input [(ngModel)]="word.wordPinyin" (keyup.enter)="save()" label="Pronunciation (Optional) " floatingLabel
+                        style="width:100%">
+        </material-input>
+        <material-input [(ngModel)]="word.language" (keyup.enter)="save()" [maxCount]="25" label="Language " floatingLabel
+                        style="width:80%">
+        </material-input>
+        <material-fab style="background-color: orangered" (trigger)="save()"
+                      [disabled]="word.wordEnglish.isEmpty || word.wordChinese.isEmpty || word.language.isEmpty" raised
+                      class="red">
+            <material-icon icon="edit"></material-icon>
+        </material-fab>
+    </div>
+</div>

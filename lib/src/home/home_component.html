@@ -1,0 +1,35 @@
+<div class="container">
+    <div style="display: block; text-align: center; margin-top: 20px" class="container">
+        <div class="btn-group">
+            <i [routerLink]="RoutePaths.add.toUrl" class="material-icons">add</i>
+            <i [routerLink]="RoutePaths.words.toUrl" class="material-icons">search</i>
+            <i [routerLink]="RoutePaths.train.toUrl" class="material-icons disabledButton">spellcheck</i>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h5 style="margin-top: 40px">Langcab is a simple webapp designed for capturing your vocabulary.</h5>
+    <p>
+        When learning a language it's not always easy to remember all the vocabulary.
+        Langcab will help you remember your words by using a spaced repetition algorithm.
+        So Langcab will automatically detect how fast you learn and let's you recall every
+        word often enough so you don't forget it, but just as often as necessary to remember.<br />
+        Even the process of adding words into the system will steady your vocabulary.
+        You can add as many languages as you want.<br />
+        To use it just sign in via Google and start by adding your first word!
+    </p>
+</div>
+<div class="container">
+    <!--<acx-scorecard-->
+            <!--label="Total words"-->
+            <!--value="{{totalWords}}">-->
+    <!--</acx-scorecard>-->
+    <!--<acx-scorecard-->
+            <!--label="Mastered words"-->
+            <!--value="{{masteredWords}}">-->
+    <!--</acx-scorecard>-->
+    <!--<acx-scorecard-->
+            <!--label="Words to study"-->
+            <!--value="{{overdueWords}}">-->
+    <!--</acx-scorecard>-->
+</div>

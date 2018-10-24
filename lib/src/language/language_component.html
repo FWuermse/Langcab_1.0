@@ -1,0 +1,29 @@
+<div class="container">
+    <h1 class="textm" style="text-align: center">Languages</h1>
+    <acx-scoreboard [type]="selectable">
+        <div class="row">
+            <div *ngFor="let language of languages">
+                <div *ngIf="language.name != selectedLanguage">
+                    <acx-scorecard
+                            [selected]="false"
+                            (click)="setLanguage(language.name)"
+                            value="${language.name}"
+                            description="${language.amount}"
+                            suggestionAfter="Words">
+                    </acx-scorecard>
+                </div>
+                <div *ngIf="language.name == selectedLanguage">
+                    <acx-scorecard
+                            [selected]="true"
+                            (click)="setLanguage(language.name)"
+                            value="${language.name}"
+                            description="${language.amount}"
+                            suggestionAfter="Words"
+                            changeType="POSITIVE">
+                    </acx-scorecard>
+                </div>
+            </div>
+        </div>
+    </acx-scoreboard>
+</div>
+

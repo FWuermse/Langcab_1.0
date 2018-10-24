@@ -1,0 +1,141 @@
+<material-drawer temporary #drawer="drawer" xmlns="http://www.w3.org/1999/html">
+    <div *deferredContent>
+        <material-list-item [routerLink]="RoutePaths.home.toUrl" (trigger)="drawer.toggle()">
+            <material-icon style="color: #5F4B8B" icon="dashboard"></material-icon>Dashboard
+        </material-list-item>
+        <material-list-item [routerLink]="RoutePaths.words.toUrl" (trigger)="drawer.toggle()">
+            <material-icon style="color: #5F4B8B" icon="list"></material-icon>Words
+        </material-list-item>
+        <material-list-item [routerLink]="RoutePaths.train.toUrl" (trigger)="drawer.toggle()">
+            <material-icon style="color: #5F4B8B" icon="spellcheck"></material-icon>Study
+        </material-list-item>
+        <material-list-item [routerLink]="RoutePaths.language.toUrl" (trigger)="drawer.toggle()">
+            <material-icon style="color: #5F4B8B" icon="language"></material-icon>Languages
+        </material-list-item>
+    </div>
+</material-drawer>
+<div class="material-content">
+    <header class="material-header shadow header">
+        <div class="material-header-row">
+            <material-button class="material-drawer-button" icon (trigger)="drawer.toggle()">
+                <material-icon icon="menu"></material-icon>
+            </material-button>
+            <span [routerLink]="RoutePaths.home.toUrl"  style="cursor: pointer" class="material-header-title">Langcab</span>
+            <div class="material-spacer"></div>
+            <nav class="material-navigation">
+                <material-button *ngIf="authService.user != null" (click)="authService.signOut()">sign out</material-button>
+                <material-button
+                        icon
+                        (trigger)="showSignInDialog = true"
+                        [disabled]="showSignInDialog">
+                        <material-icon style="cursor: pointer" icon="account_circle"></material-icon>
+                </material-button>
+            </nav>
+        </div>
+    </header>
+    <body>
+        <div>
+            <app-message></app-message>
+            <router-outlet></router-outlet>
+        </div>
+    </body>
+</div>
+
+<!--Modals-->
+<modal [visible]="showSignInDialog">
+    <material-dialog style="max-width: 397px" class="basic-dialog"
+                     [autoDismissable]="showSignInDialog"
+                     (dismiss)="showSignInDialog = false">
+        <material-tab-strip (tabChange)="tabIndex = $event.newIndex"
+                            [tabLabels]="centeredTabLabels"
+                            (click)="clickTab()"
+                            style="margin-bottom: 10px">
+        </material-tab-strip>
+        <div class="container">
+            <material-input [(ngModel)]="email"
+                            (keyup.enter)="proceed()"
+                            floatingLabel
+                            label="Email"
+                            type="email"
+                            required
+                            errorMsg="Input is not an email!"
+                            style="width:100%">
+            </material-input>
+            <material-input [(ngModel)]="password"
+                            (keyup.enter)="proceed()"
+                            floatingLabel
+                            label="Password"
+                            type="password"
+                            required
+                            style="width:100%">
+            </material-input>
+            <div *ngIf="register" class="container" style="text-align: center">
+                <div class="container">
+                    <material-button class="btnSignIn" (trigger)="signUpEmail()" style="margin-bottom: 20px;" raised>
+                        Sign up
+                    </material-button>
+                </div>
+            </div>
+            <div *ngIf="!register" class="container" style="text-align: center">
+                <div class="container">
+                    <material-button [routerLink]="RoutePaths.home.toUrl" class="btnSignIn" (trigger)="signInEmail()" style="margin-bottom: 10px;" raised>
+                        Sing in
+                    </material-button>
+                    <p style="margin-bottom: 10px">or</p>
+                </div>
+                <div class="container">
+                    <material-button [routerLink]="RoutePaths.home.toUrl" (trigger)="authService.googleSignIn(); showSignInDialog = false" style="margin: 5px" class="btnGoogle" raised>
+                        <div id="google-icon" class="icnGoogle"></div>
+                        <b class="txtGoogle">Sign in with Google</b>
+                    </material-button>
+                </div>
+                <div class="container">
+                    <material-button [routerLink]="RoutePaths.home.toUrl" (trigger)="authService.facebookSignIn(); showSignInDialog = false" class="btnFacebook" raised style="margin: 5px">
+                        <i class="fab fa-facebook fa-lg icnFacebook"></i>
+                        Sign in with Facebook
+                    </material-button>
+                </div>
+                <div class="container">
+                    <material-button [routerLink]="RoutePaths.home.toUrl" (trigger)="authService.twitterSignIn(); showSignInDialog = false" class="btnTwitter" raised style="margin: 5px">
+                        <i class="fab fa-twitter fa-lg icnTwitter"></i>
+                        Sign in with Twitter
+                    </material-button>
+                </div>
+                <div class="container">
+                    <material-button [routerLink]="RoutePaths.home.toUrl" (trigger)="authService.gitHubSignIn(); showSignInDialog = false" class="btnGitHub" raised style="margin: 5px">
+                        <i class="fab fa-github fa-lg icnGitHub"></i>
+                        Sign in with GitHub
+                    </material-button>
+                </div>
+            </div>
+        </div>
+
+        <div footer>
+            <material-button autoFocus clear-size (trigger)="showSignInDialog = false">
+                Close
+            </material-button>
+        </div>
+    </material-dialog>
+</modal>
+
+<modal [(visible)]="showAutoDismissDialog">
+    <material-dialog
+            info
+            class="info-dialog"
+            [autoDismissable]="showAutoDismissDialog"
+            (dismiss)="dismissDialog()">
+        <div header>
+            <material-button icon autoFocus (trigger)="dismissDialog()">
+                <material-icon icon="close"></material-icon>
+            </material-button>
+
+            <h1>Langcab</h1>
+        </div>
+
+        <p>Thank you for registering at www.langcab.com.<br />
+        Please log into your email account <strong>and verify<br />
+                the registration email</strong> in order to log in and be<br />
+            able to use your Langcab.</p>
+
+    </material-dialog>
+</modal>

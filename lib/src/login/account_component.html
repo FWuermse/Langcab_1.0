@@ -1,0 +1,38 @@
+<material-button (trigger)="showBasicDialog = true"
+                 [disabled]="showBasicDialog"
+                 raised>
+    Open Basic Dialog
+</material-button>
+
+<modal [visible]="showBasicDialog">
+    <material-dialog class="basic-dialog">
+
+        <h1 header>Sing in</h1>
+
+        <div class="container">
+            <material-input floatingLabel
+                            label="Email"
+                            type="email"
+                            errorMsg="Input is not an email!"
+                            style="width:100%">
+            </material-input>
+            <material-input floatingLabel
+                            label="Password"
+                            type="text"
+                            required
+                            style="width:100%">
+            </material-input>
+        </div>
+
+        <div footer>
+            <material-button autoFocus clear-size (trigger)="showBasicDialog = false">
+                Close
+            </material-button>
+        </div>
+
+    </material-dialog>
+</modal>
+
+
+
+<!--[(ngModel)]="tooltip"-->
