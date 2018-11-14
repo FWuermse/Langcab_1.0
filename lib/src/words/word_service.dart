@@ -36,7 +36,7 @@ class WordService {
       totalPages = words['totalPages'];
       currentPage = words['number']+1;
       return words['content']
-          .map((value) => new Word.fromJson(value))
+          .map<Word>((value) => new Word.fromJson(value))
           .toList();
     } catch (e) {
       throw _handleError(e);
@@ -51,7 +51,7 @@ class WordService {
       totalPages = words['totalPages'];
       currentPage = words['number']+1;
       return words['content']
-          .map((value) => new Word.fromJson(value))
+          .map<Word>((value) => new Word.fromJson(value))
           .toList();
     } catch (e) {
       throw _handleError(e);

@@ -30,7 +30,7 @@ class StudyService {
     try {
       final response = await _http.get('$_studyUrl/?language=$language', headers: {'Authorization': idToken});
       final words = _extractData(response)
-          .map((value) => new Word.fromJson(value))
+          .map<Word>((value) => new Word.fromJson(value))
           .toList();
       return words;
     } catch (e) {
@@ -43,7 +43,7 @@ class StudyService {
     try {
       final response = await _http.get('$_studyUrl/choice?language=$language', headers: {'Authorization': idToken});
       final words = _extractData(response)
-          .map((value) => new Word.fromJson(value))
+          .map<Word>((value) => new Word.fromJson(value))
           .toList();
       return words;
     } catch (e) {
@@ -56,7 +56,7 @@ class StudyService {
     try {
       final response = await _http.get('$_studyUrl/choice/all', headers: {'Authorization': idToken});
       final words = _extractData(response)
-          .map((value) => new Word.fromJson(value))
+          .map<Word>((value) => new Word.fromJson(value))
           .toList();
       return words;
     } catch (e) {

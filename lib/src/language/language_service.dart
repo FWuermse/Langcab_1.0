@@ -65,7 +65,20 @@ class LanguageService {
     String idToken = await authService.getToken();
     try {
       final response = await _http.get('$_wordsUrl/mine', headers: {'Authorization': idToken});
-      return _extractData(response);
+      if (response.statusCode != 200) {
+        try {
+          var errorList = jsonDecode(response.body);
+          if (errorList['message'] == 'Please add a new language first')
+            _messageService.add(new Message('Info: ', errorList['message'], 'info'));
+          else
+            _messageService.add(new Message('An error occurred: ', errorList['message'], 'error'));
+        } catch (e) {
+          _messageService.add(new Message('An error occurred: ', '${response.reasonPhrase} ${response.statusCode}', 'danger'));
+        }
+        return [""];
+      }
+      else
+        return(_extractData(response));
     } catch (e) {
       throw _handleError(e);
     }
