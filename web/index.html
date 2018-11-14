@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <base href="/">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-7364276574790830",
-                enable_page_level_ads: true
-            });
+            // WARNING: DO NOT set the <base href> like this in production!
+            // Details: https://webdev.dartlang.org/angular/guide/router
+            (function () {
+                var m = document.location.pathname.match(/^(\/[-\w]+)+\/web($|\/)/);
+                document.write('<base href="' + (m ? m[0] : '/') + '" />');
+            }());
         </script>
 
         <title>Vocab webapp</title>
@@ -25,7 +25,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
         <script defer src="main.dart" type="application/dart"></script>
-        <script defer src="packages/browser/dart.js"></script>
+        <script defer src="main.dart.js"></script>
 
         <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 

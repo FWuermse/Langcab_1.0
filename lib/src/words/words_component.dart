@@ -65,7 +65,7 @@ class WordsComponent implements OnInit {
 
   void ngOnInit() => preparePage();
 
-  String goToDetail(Word word) =>
+  String editUrl(Word word) =>
       RoutePaths.edit.toUrl(parameters: {idParam: '${word.wordId}'});
 
   String gotoAddDetail() =>

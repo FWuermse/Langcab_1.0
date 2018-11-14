@@ -9,12 +9,13 @@ import 'package:langcab_ui/src/study/word_study_service.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_components/angular_components.dart';
 import 'package:angular_router/angular_router.dart';
+import 'routes.dart';
 
 @Component(
   selector: 'my-app',
   templateUrl: 'app_component.html',
   styleUrls: [
-    'app_component.scss.css',
+    'app_component.css',
     'package:angular_components/app_layout/layout.scss.css',
   ],
   directives: const [
@@ -30,10 +31,17 @@ import 'package:angular_router/angular_router.dart';
     MaterialTemporaryDrawerComponent,
     ModalComponent,
     MaterialToggleComponent,
-    MessageComponent
+    MessageComponent,
+    MaterialInputDefaultValueAccessor,
+    DeferredContentDirective,
+    MaterialButtonComponent,
+    MaterialIconComponent,
+    MaterialPersistentDrawerDirective,
+    MaterialTemporaryDrawerComponent,
+    MaterialToggleComponent,
   ],
-
   providers: [WordService, StudyService, LanguageService, AuthService, MessageService, materialProviders],
+  exports: [RoutePaths, Routes],
 )
 
 class AppComponent {

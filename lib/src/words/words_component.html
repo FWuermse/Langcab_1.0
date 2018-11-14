@@ -25,9 +25,9 @@
                         <tbody>
                             <tr *ngFor="let word of words"
                                 [class.selected]="word === selectedWord" role="button">
-                                <td (click)="gotoDetail(word)">{{word.wordEnglish}}</td>
-                                <td (click)="gotoDetail(word)">{{word.wordPinyin}}</td>
-                                <td (click)="gotoDetail(word)">{{word.wordChinese}}</td>
+                                <td [routerLink]="editUrl(word)">{{word.wordEnglish}}</td>
+                                <td [routerLink]="editUrl(word)">{{word.wordPinyin}}</td>
+                                <td [routerLink]="editUrl(word)">{{word.wordChinese}}</td>
                                 <td class="action">
                                     <material-icon (click)="delete(word)" class="bin" size="x-large" icon="delete_forever"></material-icon>
                                 </td>

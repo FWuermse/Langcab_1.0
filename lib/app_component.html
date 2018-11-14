@@ -1,15 +1,15 @@
 <material-drawer temporary #drawer="drawer" xmlns="http://www.w3.org/1999/html">
     <div *deferredContent>
-        <material-list-item [routerLink]="RoutePaths.home.toUrl" (trigger)="drawer.toggle()">
+        <material-list-item [routerLink]="RoutePaths.home.toUrl()" (trigger)="drawer.toggle()">
             <material-icon style="color: #5F4B8B" icon="dashboard"></material-icon>Dashboard
         </material-list-item>
-        <material-list-item [routerLink]="RoutePaths.words.toUrl" (trigger)="drawer.toggle()">
+        <material-list-item [routerLink]="RoutePaths.words.toUrl()" (trigger)="drawer.toggle()">
             <material-icon style="color: #5F4B8B" icon="list"></material-icon>Words
         </material-list-item>
-        <material-list-item [routerLink]="RoutePaths.train.toUrl" (trigger)="drawer.toggle()">
+        <material-list-item [routerLink]="RoutePaths.train.toUrl()" (trigger)="drawer.toggle()">
             <material-icon style="color: #5F4B8B" icon="spellcheck"></material-icon>Study
         </material-list-item>
-        <material-list-item [routerLink]="RoutePaths.language.toUrl" (trigger)="drawer.toggle()">
+        <material-list-item [routerLink]="RoutePaths.language.toUrl()" (trigger)="drawer.toggle()">
             <material-icon style="color: #5F4B8B" icon="language"></material-icon>Languages
         </material-list-item>
     </div>
@@ -20,7 +20,7 @@
             <material-button class="material-drawer-button" icon (trigger)="drawer.toggle()">
                 <material-icon icon="menu"></material-icon>
             </material-button>
-            <span [routerLink]="RoutePaths.home.toUrl"  style="cursor: pointer" class="material-header-title">Langcab</span>
+            <span [routerLink]="RoutePaths.home.toUrl()"  style="cursor: pointer" class="material-header-title">Langcab</span>
             <div class="material-spacer"></div>
             <nav class="material-navigation">
                 <material-button *ngIf="authService.user != null" (click)="authService.signOut()">sign out</material-button>
@@ -36,7 +36,7 @@
     <body>
         <div>
             <app-message></app-message>
-            <router-outlet></router-outlet>
+            <router-outlet [routes]="Routes.all"></router-outlet>
         </div>
     </body>
 </div>
@@ -78,31 +78,31 @@
             </div>
             <div *ngIf="!register" class="container" style="text-align: center">
                 <div class="container">
-                    <material-button [routerLink]="RoutePaths.home.toUrl" class="btnSignIn" (trigger)="signInEmail()" style="margin-bottom: 10px;" raised>
+                    <material-button [routerLink]="RoutePaths.home.toUrl()" class="btnSignIn" (trigger)="signInEmail()" style="margin-bottom: 10px;" raised>
                         Sing in
                     </material-button>
                     <p style="margin-bottom: 10px">or</p>
                 </div>
                 <div class="container">
-                    <material-button [routerLink]="RoutePaths.home.toUrl" (trigger)="authService.googleSignIn(); showSignInDialog = false" style="margin: 5px" class="btnGoogle" raised>
+                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.googleSignIn(); showSignInDialog = false" style="margin: 5px" class="btnGoogle" raised>
                         <div id="google-icon" class="icnGoogle"></div>
                         <b class="txtGoogle">Sign in with Google</b>
                     </material-button>
                 </div>
                 <div class="container">
-                    <material-button [routerLink]="RoutePaths.home.toUrl" (trigger)="authService.facebookSignIn(); showSignInDialog = false" class="btnFacebook" raised style="margin: 5px">
+                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.facebookSignIn(); showSignInDialog = false" class="btnFacebook" raised style="margin: 5px">
                         <i class="fab fa-facebook fa-lg icnFacebook"></i>
                         Sign in with Facebook
                     </material-button>
                 </div>
                 <div class="container">
-                    <material-button [routerLink]="RoutePaths.home.toUrl" (trigger)="authService.twitterSignIn(); showSignInDialog = false" class="btnTwitter" raised style="margin: 5px">
+                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.twitterSignIn(); showSignInDialog = false" class="btnTwitter" raised style="margin: 5px">
                         <i class="fab fa-twitter fa-lg icnTwitter"></i>
                         Sign in with Twitter
                     </material-button>
                 </div>
                 <div class="container">
-                    <material-button [routerLink]="RoutePaths.home.toUrl" (trigger)="authService.gitHubSignIn(); showSignInDialog = false" class="btnGitHub" raised style="margin: 5px">
+                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.gitHubSignIn(); showSignInDialog = false" class="btnGitHub" raised style="margin: 5px">
                         <i class="fab fa-github fa-lg icnGitHub"></i>
                         Sign in with GitHub
                     </material-button>

@@ -3,6 +3,7 @@ import 'package:angular_components/angular_components.dart';
 import 'package:angular_components/scorecard/scoreboard.dart';
 import 'package:angular_components/scorecard/scorecard.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:langcab_ui/route_paths.dart';
 
 
 @Component(
@@ -24,4 +25,9 @@ import 'package:angular_router/angular_router.dart';
 class HomeComponent {
 
   HomeComponent();
+
+  String addUrl() => RoutePaths.add.toUrl();
+  String wordsUrl() => RoutePaths.words.toUrl();
+  String trainUrl() => RoutePaths.train.toUrl();
+
 }

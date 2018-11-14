@@ -1,9 +1,9 @@
 <div class="container">
     <div style="display: block; text-align: center; margin-top: 20px" class="container">
         <div class="btn-group">
-            <i [routerLink]="RoutePaths.add.toUrl" class="material-icons">add</i>
-            <i [routerLink]="RoutePaths.words.toUrl" class="material-icons">search</i>
-            <i [routerLink]="RoutePaths.train.toUrl" class="material-icons disabledButton">spellcheck</i>
+            <i [routerLink]="addUrl()" class="material-icons">add</i>
+            <i [routerLink]="wordsUrl()" class="material-icons">search</i>
+            <i [routerLink]="trainUrl()" class="material-icons disabledButton">spellcheck</i>
         </div>
     </div>
 </div>
