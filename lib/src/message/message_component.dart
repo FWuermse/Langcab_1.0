@@ -8,7 +8,7 @@ import 'package:langcab_ui/src/message/message_service.dart';
   styleUrls: const ['message_component.css'],
   directives: const [
     routerDirectives,
-    CORE_DIRECTIVES,
+    coreDirectives,
   ],
 )
 

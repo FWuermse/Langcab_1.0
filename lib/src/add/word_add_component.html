@@ -3,7 +3,7 @@
         <material-icon (click)="goBack()" style="color: black; margin: 15px; cursor: pointer" icon="arrow_back"></material-icon>
         <material-input [(ngModel)]="word.wordEnglish" label="Original" autoFocus floatingLabel style="width:100%">
         </material-input>
-        <material-input [(ngModel)]="word.wordChinese" (keyup.enter)="addWord(word)" label="${label}" floatingLabel
+        <material-input [(ngModel)]="word.wordChinese" (keyup.enter)="addWord(word)" label="{{label}}" floatingLabel
                         style="width:100%">
         </material-input>
         <material-input [(ngModel)]="word.wordPinyin" (keyup.enter)="addWord(word)" label="Pronunciation (Optional)" floatingLabel style="width:100%">

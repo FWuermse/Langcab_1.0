@@ -1,4 +1,5 @@
 import 'package:angular/angular.dart';
+import 'package:angular_components/angular_components.dart';
 import 'package:angular_components/material_input/material_input.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:angular_forms/angular_forms.dart';
@@ -10,7 +11,7 @@ import 'package:langcab_ui/src/words/word_service.dart';
   selector: 'hero-add',
   templateUrl: 'word_add_component.html',
   styleUrls: const ['word_add_component.css'],
-  directives: const [coreDirectives, formDirectives, materialInputDirectives],
+  directives: const [coreDirectives, formDirectives, materialInputDirectives, MaterialFabComponent, MaterialIconComponent],
 )
 class WordAddComponent implements OnInit {
   Word word;

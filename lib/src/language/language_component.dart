@@ -10,7 +10,7 @@ import 'package:langcab_ui/src/words/word_service.dart';
   selector: 'hero-add',
   templateUrl: 'language_component.html',
   styleUrls: const ['language_component.css'],
-  directives: const [CORE_DIRECTIVES, formDirectives, materialDirectives, ScoreboardComponent, ScorecardComponent, NgFor],
+  directives: const [materialDirectives, coreDirectives, formDirectives, ScoreboardComponent, ScorecardComponent, NgFor],
 )
 class LanguageComponent implements OnInit {
   List<String> myLanguages;

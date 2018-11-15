@@ -13,10 +13,10 @@ import 'package:langcab_ui/route_paths.dart';
   directives: const [
     coreDirectives,
     routerDirectives,
+    materialDirectives,
     ScoreboardComponent,
     ScorecardComponent,
     MaterialButtonComponent,
-    materialDirectives,
     MaterialIconComponent,
     MaterialInputComponent
   ],

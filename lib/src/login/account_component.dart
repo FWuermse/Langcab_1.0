@@ -12,10 +12,10 @@ import 'package:angular_router/angular_router.dart';
   directives: const [
     coreDirectives,
     routerDirectives,
+    materialDirectives,
     ScoreboardComponent,
     ScorecardComponent,
     MaterialButtonComponent,
-    materialDirectives,
     MaterialIconComponent,
     ModalComponent,
     MaterialInputComponent

@@ -12,7 +12,7 @@ import 'word_study_service.dart';
   templateUrl: 'study_component.html',
   styleUrls: const ['study_component.css', 'study_component.css'],
   directives: const [
-    CORE_DIRECTIVES,
+    coreDirectives,
     formDirectives,
     materialDirectives,
     ButtonDirective,

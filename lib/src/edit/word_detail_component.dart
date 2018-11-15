@@ -11,7 +11,14 @@ import 'package:langcab_ui/src/words/word_service.dart';
   selector: 'word-detail',
   templateUrl: 'word_detail_component.html',
   styleUrls: const ['../add/word_add_component.css'],
-  directives: const [formDirectives, coreDirectives, materialInputDirectives],
+  directives: const [
+    formDirectives,
+    coreDirectives,
+    AutoFocusDirective,
+    MaterialButtonComponent,
+    MaterialIconComponent,
+    materialInputDirectives,
+  ],
 )
 class WordDetailComponent implements OnActivate {
   Word word;

@@ -1,7 +1,7 @@
 <ul class="words">
     <div class="container">
         <div>
-            <material-input [ngModel]="searchString" (ngModelChange)="onKey($event)" label="Search for words: " floatingLabel style="width:80%">
+            <material-input [ngModel]="searchString" (keyup)="onKey($event)" label="Search for words: " floatingLabel style="width:80%">
             </material-input>
             <material-fab *ngIf="button" (click)="gotoAddDetail()" raised class="red">
                 <material-icon icon="add"></material-icon>

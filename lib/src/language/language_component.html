@@ -7,8 +7,8 @@
                     <acx-scorecard
                             [selected]="false"
                             (click)="setLanguage(language.name)"
-                            value="${language.name}"
-                            description="${language.amount}"
+                            value="{{language.name}}"
+                            description="{{language.amount}}"
                             suggestionAfter="Words">
                     </acx-scorecard>
                 </div>
@@ -16,8 +16,8 @@
                     <acx-scorecard
                             [selected]="true"
                             (click)="setLanguage(language.name)"
-                            value="${language.name}"
-                            description="${language.amount}"
+                            value="{{language.name}}"
+                            description="{{language.amount}}"
                             suggestionAfter="Words"
                             changeType="POSITIVE">
                     </acx-scorecard>

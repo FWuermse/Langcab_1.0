@@ -4,7 +4,7 @@
         <material-input [(ngModel)]="word.wordEnglish" (keyup.enter)="save()" label="Original " autoFocus floatingLabel
                         style="width:100%">
         </material-input>
-        <material-input [(ngModel)]="word.wordChinese" (keyup.enter)="save()" label="${label}" floatingLabel
+        <material-input [(ngModel)]="word.wordChinese" (keyup.enter)="save()" label="{{label}}" floatingLabel
                         style="width:100%">
         </material-input>
         <material-input [(ngModel)]="word.wordPinyin" (keyup.enter)="save()" label="Pronunciation (Optional) " floatingLabel

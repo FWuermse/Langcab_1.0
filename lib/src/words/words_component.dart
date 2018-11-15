@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:html';
 import 'package:angular/angular.dart';
+import 'package:angular_components/material_input/material_input.dart';
 import 'package:logging/logging.dart';
 import 'package:langcab_ui/src/edit/word_detail_component.dart';
 import 'package:langcab_ui/src/language/language_service.dart';
@@ -19,7 +20,8 @@ import '../../route_paths.dart';
     routerDirectives,
     WordDetailComponent,
     LanguageService,
-    MessageService
+    MessageService,
+    MaterialInputComponent
   ],
   preserveWhitespace: true,
   pipes: const [commonPipes],
@@ -77,7 +79,8 @@ class WordsComponent implements OnInit {
   }
 
   Future<Null> onKey(KeyboardEvent event) async {
-    searchString = event.toString();
+    InputElement el = event.target;
+    searchString = el.value;
     getWords();
 
   }

@@ -69,7 +69,7 @@ class StudyService {
     try {
       final response = await _http.get('$_studyUrl/all', headers: {'Authorization': idToken});
       final words = _extractData(response)
-          .map((value) => new Word.fromJson(value))
+          .map<Word>((value) => new Word.fromJson(value))
           .toList();
       return words;
     } catch (e) {
