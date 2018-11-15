@@ -3,10 +3,10 @@
         <div>
             <material-input [ngModel]="searchString" (keyup)="onKey($event)" label="Search for words: " floatingLabel style="width:80%">
             </material-input>
-            <material-fab *ngIf="button" (click)="gotoAddDetail()" raised class="red">
+            <material-fab *ngIf="button" [routerLink]="gotoAddDetail()" raised class="red">
                 <material-icon icon="add"></material-icon>
             </material-fab>
-            <material-fab *ngIf="!button" (click)="gotoAddDetail()" mini raised class="redMin">
+            <material-fab *ngIf="!button" [routerLink]="gotoAddDetail()" mini raised class="redMin">
                 <material-icon icon="add"></material-icon>
             </material-fab>
         </div>

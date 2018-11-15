@@ -36,7 +36,7 @@ class LanguageService {
     return new Exception('Server error; cause: $e');
   }
 
-  dynamic _extractData(Response resp) => jsonDecode(resp.body);
+  dynamic _extractData(Response resp) => jsonDecode(resp.body).cast<String>();
 
   Future<String> getLastLanguage() async {
     String idToken = await authService.getToken();
@@ -78,7 +78,7 @@ class LanguageService {
         return [""];
       }
       else
-        return(_extractData(response));
+        return _extractData(response);
     } catch (e) {
       throw _handleError(e);
     }

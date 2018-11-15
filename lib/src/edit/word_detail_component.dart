@@ -18,6 +18,7 @@ import 'package:langcab_ui/src/words/word_service.dart';
     MaterialButtonComponent,
     MaterialIconComponent,
     materialInputDirectives,
+    MaterialFabComponent
   ],
 )
 class WordDetailComponent implements OnActivate {
