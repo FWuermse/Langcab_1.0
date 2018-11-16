@@ -40,7 +40,7 @@ import 'routes.dart';
   exports: [RoutePaths, Routes],
 )
 
-class AppComponent {
+class AppComponent{
 
   final AuthService authService;
   final centeredTabLabels = const <String>['Sign in', 'Sign up'];
