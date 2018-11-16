@@ -94,12 +94,12 @@ class StudyComponent extends OnInit {
     else {
       wordSuggestions = await _studyService.getWordSuggestions(selectedWord.language);
       tipNeeded = true;
-      var toRemove = [];
-      wordSuggestions.forEach( (w) {
+      List<Word> toRemove = [];
+      wordSuggestions.forEach( (Word w) {
         if(w.wordEnglish == selectedWord.wordEnglish)
           toRemove.add(w);
       });
-      wordSuggestions.removeWhere( (word) => toRemove.contains(word));
+      wordSuggestions.removeWhere( (Word word) => toRemove.contains(word));
       wordSuggestions.add(selectedWord);
       wordSuggestions.shuffle();
     }
@@ -114,12 +114,12 @@ class StudyComponent extends OnInit {
     wordSuggestions.forEach( (word) {reversedWordSuggestions.add(wordRevert(word));});
     wordSuggestions = await reversedWordSuggestions;
     tipNeeded = true;
-    var toRemove = [];
-    wordSuggestions.forEach( (w) {
+    List<Word> toRemove = [];
+    wordSuggestions.forEach( (Word w) {
       if(w.wordEnglish == selectedWord.wordEnglish)
         toRemove.add(w);
     });
-    wordSuggestions.removeWhere( (word) => toRemove.contains(word));
+    wordSuggestions.removeWhere( (Word word) => toRemove.contains(word));
     wordSuggestions.add(selectedWord);
     wordSuggestions.shuffle();
   }
@@ -136,7 +136,7 @@ class StudyComponent extends OnInit {
     onCheck = true;
   }
 
-  ItemRenderer<Word> wordRenderer = (Word word) {
+  ItemRenderer<dynamic> wordRenderer = (dynamic word) {
     return word.wordEnglish;
   };
 
@@ -155,6 +155,7 @@ class StudyComponent extends OnInit {
         break;
       case 1:
         overdueWords = await _studyService.getAllOverdueWords();
+        await overdueWords.shuffle();
         maxAmount = overdueWords.length;
         language = 'All';
         allLanguages = true;

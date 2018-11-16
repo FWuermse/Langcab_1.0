@@ -41,7 +41,7 @@ class LanguageService {
   Future<String> getLastLanguage() async {
     String idToken = await authService.getToken();
     try {
-      final response = await _http.get('$_wordsUrl/last', headers: {'Authorization': idToken});
+      final Response response = await _http.get('$_wordsUrl/last', headers: {'Authorization': idToken});
       if (response.statusCode != 200) {
         try {
           var errorList = jsonDecode(response.body);

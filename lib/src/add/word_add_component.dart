@@ -4,6 +4,8 @@ import 'package:angular_components/material_input/material_input.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:langcab_ui/src/language/language_service.dart';
+import 'package:langcab_ui/src/message/message.dart';
+import 'package:langcab_ui/src/message/message_service.dart';
 import 'package:langcab_ui/src/words/word.dart';
 import 'package:langcab_ui/src/words/word_service.dart';
 
@@ -15,13 +17,15 @@ import 'package:langcab_ui/src/words/word_service.dart';
 )
 class WordAddComponent implements OnInit {
   Word word;
+
+  final MessageService _messageService;
   final WordService _wordService;
   final Location _location;
   final LanguageService _languageService;
 
   String label = "Translation";
 
-  WordAddComponent(this._wordService, this._location, this._languageService);
+  WordAddComponent(this._messageService, this._wordService, this._location, this._languageService);
 
   void ngOnInit() {
     word = new Word(0, '', '', '', '');
@@ -35,13 +39,17 @@ class WordAddComponent implements OnInit {
 
   addWord(Word newWord) async {
     word = newWord;
-    if (word.wordChinese.length > 0 ||
-        word.wordEnglish.length > 0 ||
+    if (word.wordChinese.length > 0 &&
+        word.wordEnglish.length > 0 &&
         word.language.length > 0) {
       await _wordService.create(
           word.wordEnglish, word.wordPinyin, word.wordChinese, word.language);
       _languageService.setLanguage(word.language);
       goBack();
+    } else {
+      _messageService.add(new Message('Info: ',
+          'A new entry must at least contain a word, it´s translation and a language',
+          'info'));
     }
   }
 

@@ -117,7 +117,7 @@ class AuthService {
       else {
         _messageService.add(new Message('Sign in error: ', 'Please verify your email', 'danger'));
         _fbAuth.signOut();
-        throw new Exception("Email is not verified");
+        throw new Exception('Email is not verified');
       }
     } else {
       for (int i=0;i<20;i++) {
@@ -125,8 +125,8 @@ class AuthService {
         if (user != null)
           return user.getIdToken(true);
       }
-      _messageService.add(new Message('Warning: ', 'User is not singed in', 'warning'));
-      throw new Exception("User is not singed in");
+      _messageService.add(new Message('Warning: ', 'Please sign in or register a new account.', 'warning'));
+      throw new Exception('Please sign in or register a new account.');
     }
   }
 }

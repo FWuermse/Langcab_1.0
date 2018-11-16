@@ -18,18 +18,12 @@ class StudyService {
   final MessageService _messageService;
   StudyService(this._http, AuthService this.authService, this._messageService);
 
-  dynamic _extractData(Response resp) => jsonDecode(resp.body);
-
-  Exception _handleError(dynamic e) {
-    _messageService.add(new Message('An error occurred: ', '$e', 'danger'));
-    return new Exception('Server error; cause: $e');
-  }
-
   Future<List<Word>> getOverdueWords(String language) async {
     String idToken = await authService.getToken();
     try {
-      final response = await _http.get('$_studyUrl/?language=$language', headers: {'Authorization': idToken});
-      final words = _extractData(response)
+      final Response response = await _http.get('$_studyUrl/?language=$language', headers: {'Authorization': idToken});
+      _checkResponse(response);
+      final List<Word> words = _extractData(response)
           .map<Word>((value) => new Word.fromJson(value))
           .toList();
       return words;
@@ -41,8 +35,9 @@ class StudyService {
   Future<List<Word>> getWordSuggestions(String language) async {
     String idToken = await authService.getToken();
     try {
-      final response = await _http.get('$_studyUrl/choice?language=$language', headers: {'Authorization': idToken});
-      final words = _extractData(response)
+      final Response response = await _http.get('$_studyUrl/choice?language=$language', headers: {'Authorization': idToken});
+      _checkResponse(response);
+      final List<Word> words = _extractData(response)
           .map<Word>((value) => new Word.fromJson(value))
           .toList();
       return words;
@@ -54,8 +49,9 @@ class StudyService {
   Future<List<Word>> getAllWordSuggestions() async {
     String idToken = await authService.getToken();
     try {
-      final response = await _http.get('$_studyUrl/choice/all', headers: {'Authorization': idToken});
-      final words = _extractData(response)
+      final Response response = await _http.get('$_studyUrl/choice/all', headers: {'Authorization': idToken});
+      _checkResponse(response);
+      final List<Word> words = _extractData(response)
           .map<Word>((value) => new Word.fromJson(value))
           .toList();
       return words;
@@ -67,8 +63,9 @@ class StudyService {
   Future<List<Word>> getAllOverdueWords() async {
     String idToken = await authService.getToken();
     try {
-      final response = await _http.get('$_studyUrl/all', headers: {'Authorization': idToken});
-      final words = _extractData(response)
+      final Response response = await _http.get('$_studyUrl/all', headers: {'Authorization': idToken});
+      _checkResponse(response);
+      final List<Word> words = _extractData(response)
           .map<Word>((value) => new Word.fromJson(value))
           .toList();
       return words;
@@ -80,7 +77,8 @@ class StudyService {
   Future<int> getOverdueWordsAmount() async {
     String idToken = await authService.getToken();
     try {
-      final response = await _http.get('$_studyUrl/all/amount', headers: {'Authorization': idToken});
+      final Response response = await _http.get('$_studyUrl/all/amount', headers: {'Authorization': idToken});
+      _checkResponse(response);
       final words = _extractData(response);
       return words['totalElements'];
     } catch (e) {
@@ -91,11 +89,27 @@ class StudyService {
   Future<Null> afterStudying(String wordId, String difficulty) async {
     String idToken = await authService.getToken();
     try {
-      await _http.post('$_studyUrl/',
+      final Response response = await _http.post('$_studyUrl/',
           headers: {'Authorization': idToken, 'Content-Type': 'application/json'},
           body: jsonEncode({'id': wordId, 'di': difficulty}));
+      _checkResponse(response);
     } catch (e) {
       throw _handleError(e);
+    }
+  }
+
+  dynamic _extractData(Response resp) => jsonDecode(resp.body);
+
+  Exception _handleError(dynamic e) {
+    print(e);
+    _messageService.add(new Message('An error occurred: ', '$e', 'danger'));
+    return new Exception('Server error; cause: $e');
+  }
+
+  void _checkResponse(Response response) {
+    if (response.statusCode != 200) {
+      dynamic decodedResponse = jsonDecode(response.body);
+      throw new Exception('Status: ${decodedResponse["status"]} Error: ${decodedResponse["error"]}');
     }
   }
 

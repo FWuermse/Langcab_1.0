@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:angular/angular.dart';
 import 'package:langcab_ui/src/message/message.dart';
 
@@ -6,8 +8,10 @@ class MessageService {
 
   List<Message> messages = [];
 
-  add(Message message) {
+  add(Message message) async {
     messages.add(message);
+    await new Future.delayed(const Duration(milliseconds: 5000));
+    remove(message);
   }
 
   remove(Message message) {
