@@ -8,7 +8,6 @@ import 'package:langcab_ui/src/message/message_service.dart';
 
 @Injectable()
 class LanguageService {
-//  static const _wordsUrl = 'http://localhost/api/language'; // URL to web API Dev
   static const _wordsUrl = 'https://www.langcab.com/api/language'; // URL to web Prod
   final Client _http;
   final AuthService authService;

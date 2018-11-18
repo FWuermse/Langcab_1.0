@@ -26,8 +26,8 @@
                 <material-button *ngIf="authService.user != null" (click)="authService.signOut()">sign out</material-button>
                 <material-button
                         icon
-                        (trigger)="showSignInDialog = true"
-                        [disabled]="showSignInDialog">
+                        (trigger)="loginService.showSignInDialog = true"
+                        [disabled]="loginService.showSignInDialog">
                         <material-icon style="cursor: pointer" icon="account_circle"></material-icon>
                 </material-button>
             </nav>
@@ -42,10 +42,10 @@
 </div>
 
 <!--Modals-->
-<modal [visible]="showSignInDialog">
+<modal [visible]="loginService.showSignInDialog">
     <material-dialog style="max-width: 397px" class="basic-dialog"
-                     [autoDismissable]="showSignInDialog"
-                     (dismiss)="showSignInDialog = false">
+                     [autoDismissable]="loginService.showSignInDialog"
+                     (dismiss)="loginService.showSignInDialog = false">
         <material-tab-strip (tabChange)="tabIndex = $event.newIndex"
                             [tabLabels]="centeredTabLabels"
                             (click)="clickTab()"
@@ -84,25 +84,25 @@
                     <p style="margin-bottom: 10px">or</p>
                 </div>
                 <div class="container">
-                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.googleSignIn(); showSignInDialog = false" style="margin: 5px" class="btnGoogle" raised>
+                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.googleSignIn(); loginService.showSignInDialog = false" style="margin: 5px" class="btnGoogle" raised>
                         <div id="google-icon" class="icnGoogle"></div>
                         <b class="txtGoogle">Sign in with Google</b>
                     </material-button>
                 </div>
                 <div class="container">
-                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.facebookSignIn(); showSignInDialog = false" class="btnFacebook" raised style="margin: 5px">
+                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.facebookSignIn(); loginService.showSignInDialog = false" class="btnFacebook" raised style="margin: 5px">
                         <i class="fab fa-facebook fa-lg icnFacebook"></i>
                         Sign in with Facebook
                     </material-button>
                 </div>
                 <div class="container">
-                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.twitterSignIn(); showSignInDialog = false" class="btnTwitter" raised style="margin: 5px">
+                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.twitterSignIn(); loginService.showSignInDialog = false" class="btnTwitter" raised style="margin: 5px">
                         <i class="fab fa-twitter fa-lg icnTwitter"></i>
                         Sign in with Twitter
                     </material-button>
                 </div>
                 <div class="container">
-                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.gitHubSignIn(); showSignInDialog = false" class="btnGitHub" raised style="margin: 5px">
+                    <material-button [routerLink]="RoutePaths.home.toUrl()" (trigger)="authService.gitHubSignIn(); loginService.showSignInDialog = false" class="btnGitHub" raised style="margin: 5px">
                         <i class="fab fa-github fa-lg icnGitHub"></i>
                         Sign in with GitHub
                     </material-button>
@@ -111,7 +111,7 @@
         </div>
 
         <div footer>
-            <material-button autoFocus clear-size (trigger)="showSignInDialog = false">
+            <material-button autoFocus clear-size (trigger)="loginService.showSignInDialog = false">
                 Close
             </material-button>
         </div>

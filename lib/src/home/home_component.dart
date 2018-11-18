@@ -4,6 +4,7 @@ import 'package:angular_components/scorecard/scoreboard.dart';
 import 'package:angular_components/scorecard/scorecard.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:langcab_ui/route_paths.dart';
+import 'package:langcab_ui/src/login/login_service.dart';
 
 
 @Component(
@@ -24,10 +25,13 @@ import 'package:langcab_ui/route_paths.dart';
 
 class HomeComponent {
 
-  HomeComponent();
+  final LoginService loginService;
+
+  HomeComponent(this.loginService);
 
   String addUrl() => RoutePaths.add.toUrl();
   String wordsUrl() => RoutePaths.words.toUrl();
   String trainUrl() => RoutePaths.train.toUrl();
-
+  String homeUrl() => RoutePaths.home.toUrl();
+  void showLogin() => loginService.showSignInDialog = true;
 }

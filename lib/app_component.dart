@@ -4,6 +4,8 @@ import 'package:angular/angular.dart';
 import 'package:http/src/response.dart';
 import 'package:langcab_ui/src/login/auth_service.dart';
 import 'package:langcab_ui/src/language/language_service.dart';
+import 'package:langcab_ui/src/login/login_service.dart';
+import 'package:langcab_ui/src/message/message.dart';
 import 'package:langcab_ui/src/message/message_component.dart';
 import 'package:langcab_ui/src/message/message_service.dart';
 import 'package:langcab_ui/src/words/word_service.dart';
@@ -36,15 +38,13 @@ import 'routes.dart';
     MaterialTemporaryDrawerComponent,
     MaterialToggleComponent,
   ],
-  providers: [WordService, StudyService, LanguageService, AuthService, MessageService, materialProviders],
+  providers: [WordService, StudyService, LanguageService, AuthService, MessageService, LoginService, materialProviders],
   exports: [RoutePaths, Routes],
 )
 
-class AppComponent{
+class AppComponent {
 
-  final AuthService authService;
   final centeredTabLabels = const <String>['Sign in', 'Sign up'];
-  bool showSignInDialog = false;
   bool showAutoDismissDialog = false;
   bool showPassword = false;
   bool register = false;
@@ -53,7 +53,10 @@ class AppComponent{
   String email;
   String password;
 
-  AppComponent(AuthService this.authService);
+  final AuthService authService;
+  final LoginService loginService;
+
+  AppComponent(this.authService, this.loginService);
 
   togglePW() {
     if (showPassword = false)
@@ -82,8 +85,7 @@ class AppComponent{
     authService.emailSignIn(email, password);
     email = "";
     password = "";
-    showSignInDialog = false;
-    await authService.getToken();
+    loginService.showSignInDialog = false;
   }
 
   Future<Null> signUpEmail() async {
@@ -91,7 +93,7 @@ class AppComponent{
       authService.emailSignUp(email, password);
       email = "";
       password = "";
-      showSignInDialog = false;
+      loginService.showSignInDialog = false;
       showAutoDismissDialog = true;
     } catch (e) {
       print('error $e');
@@ -102,6 +104,6 @@ class AppComponent{
     showAutoDismissDialog = false;
     register = false;
     tabIndex = 0;
-    showSignInDialog = true;
+    loginService.showSignInDialog = true;
   }
 }
