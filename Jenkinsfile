@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-               sh 'echo comming soon'
+               sh 'echo coming soon'
             }
         }
     }
