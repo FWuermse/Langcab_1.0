@@ -6,7 +6,7 @@ import 'src/words/words_component.template.dart' as words_template;
 import 'src/add/word_add_component.template.dart' as add_template;
 import 'src/edit/word_detail_component.template.dart' as edit_template;
 import 'src/language/language_component.template.dart' as language_template;
-import 'src/study/study_component.template.dart' as train_template;
+import 'src/study/study_component.template.dart' as study_template;
 
 
 export 'route_paths.dart';
@@ -39,7 +39,7 @@ class Routes {
 
   static final train = RouteDefinition(
     routePath: RoutePaths.train,
-    component: train_template.StudyComponentNgFactory,
+    component: study_template.StudyComponentNgFactory,
   );
 
   static final all = <RouteDefinition>[

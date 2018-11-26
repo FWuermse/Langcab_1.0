@@ -10,7 +10,7 @@ import 'word_study_service.dart';
 @Component(
   selector: 'study',
   templateUrl: 'study_component.html',
-  styleUrls: const ['study_component.css', 'study_component.css'],
+  styleUrls: const ['study_component.css'],
   directives: const [
     coreDirectives,
     formDirectives,

@@ -1,4 +1,14 @@
+FROM google/dart:latest AS build
+RUN mkdir -p /webapp
+WORKDIR /app
+ADD pubspec.* /app/
+RUN pub get
+ADD . /app
+RUN pub get --offline
+RUN pub global activate webdev
+RUN pub global run webdev build
+
 FROM nginx
-COPY web /usr/share/nginx/html/
+COPY --from=build /app/build /usr/share/nginx/html/
 RUN rm -v /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/default.conf
