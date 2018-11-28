@@ -1,10 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout')
+        stage('Checkout') {
             steps {
                 sh 'echo Checkout successful'
             }
+        }
         stage('Build') {
             steps {
                 sh 'sudo docker stop langcab_ui && sudo docker rm langcab_ui'
