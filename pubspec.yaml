@@ -17,6 +17,7 @@ dependencies:
   stream_transform: ^0.0.14+1
   firebase: ^5.0.2
   googleapis_auth: ^0.2.6
+  service_worker: ^0.2.3
 
 dev_dependencies:
   angular_test: ^2.0.0
