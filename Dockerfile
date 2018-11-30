@@ -6,7 +6,7 @@ RUN pub get
 ADD . /app
 RUN pub get --offline
 RUN pub global activate webdev
-RUN pub global run webdev build
+RUN pub global run webdev build --fast-startup --minify --trust-primitives --trust-type-annotations
 
 FROM nginx
 COPY --from=build /app/build /usr/share/nginx/html/
