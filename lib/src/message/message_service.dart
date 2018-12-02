@@ -10,7 +10,7 @@ class MessageService {
 
   add(Message message) async {
     messages.add(message);
-    await new Future.delayed(const Duration(milliseconds: 5000));
+    await new Future.delayed(const Duration(milliseconds: 3500));
     remove(message);
   }
 
