@@ -6,16 +6,8 @@ pipeline {
     stages {
         stage('Undeploy UI') {
             steps {
-                if ($"sh 'sudo docker ps -q -f name=$CN'" != null) {
-                    if (sh 'sudo docker ps -aq -f status=exited -f name=$CN' == null) {
-                        sh 'sudo docker stop $CN && sudo docker rm $CN'
-                    }
-                sh 'sudo docker rmi CN'
-                }
-                if (sh 'sudo docker images -aq -f reference=$SCN' != null) {
-                    sh 'sudo docker rmi $SCN'
-                }
-
+                sh 'sudo docker stop $CN && sudo docker rm $CN'
+                sh 'sudo docker rmi $CN'
             }
         }
         stage('Build dart') {
