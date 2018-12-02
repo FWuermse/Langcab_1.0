@@ -1,15 +1,26 @@
 pipeline {
     agent any
+    environment {
+        CN = 'langcab_ui'
+    }
     stages {
         stage('Undeploy UI') {
             steps {
-                 sh 'sudo docker stop langcab_ui && sudo docker rm langcab_ui'
-                 sh 'sudo docker rmi langcab_ui'
-             }
+                if (sh 'sudo docker ps -q -f name=$CN' != null) {
+                    if (sh 'sudo docker ps -aq -f status=exited -f name=$CN' == null) {
+                        sh 'sudo docker stop $CN && sudo docker rm $CN'
+                    }
+                sh 'sudo docker rmi CN'
+                }
+                if (sh 'sudo docker images -aq -f reference=$SCN' != null) {
+                    sh 'sudo docker rmi $SCN'
+                }
+
+            }
         }
         stage('Build dart') {
             steps {
-                sh 'sudo docker build -t langcab_ui .'
+                sh 'sudo docker build -t $CN .'
             }
         }
         stage('Deploy') {
