@@ -7,6 +7,8 @@ import 'src/add/word_add_component.template.dart' as add_template;
 import 'src/edit/word_detail_component.template.dart' as edit_template;
 import 'src/language/language_component.template.dart' as language_template;
 import 'src/study/study_component.template.dart' as study_template;
+import 'src/termsandprivacy/privacy_component.template.dart' as privacy_template;
+import 'src/termsandprivacy/terms_component.template.dart' as terms_template;
 
 
 export 'route_paths.dart';
@@ -42,6 +44,16 @@ class Routes {
     component: study_template.StudyComponentNgFactory,
   );
 
+  static final privacy = RouteDefinition(
+    routePath: RoutePaths.privacy,
+    component: privacy_template.PrivacyComponentNgFactory,
+  );
+
+  static final terms = RouteDefinition(
+    routePath: RoutePaths.terms,
+    component: terms_template.TermsComponentNgFactory,
+  );
+
   static final all = <RouteDefinition>[
     home,
     add,
@@ -49,6 +61,8 @@ class Routes {
     words,
     language,
     train,
+    privacy,
+    terms,
     RouteDefinition.redirect(
       path: '',
       redirectTo: RoutePaths.home.toUrl(),

@@ -8,3 +8,11 @@
 header.material-header.material-header {
     background-color: #5F4B8B;
 }
+
+.footerContnet {
+    min-height: calc(100vh - 130px);
+}
+footer {
+    height: 30px;
+    text-align: center;
+}

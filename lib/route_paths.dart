@@ -10,6 +10,9 @@ class RoutePaths {
   static final language = RoutePath(path: 'language');
   static final login = RoutePath(path: 'login');
   static final train = RoutePath(path: 'train');
+  static final privacy = RoutePath(path: 'privacy');
+  static final terms = RoutePath(path: 'terms');
+
 }
 
 int getId(Map<String, String> parameters) {

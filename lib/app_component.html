@@ -34,11 +34,15 @@
         </div>
     </header>
     <body>
-        <div>
+        <div class="footerContnet">
             <app-message></app-message>
             <router-outlet [routes]="Routes.all"></router-outlet>
         </div>
     </body>
+    <footer>
+        <a style="padding-right: 10px" [routerLink]="RoutePaths.privacy.toUrl()">Privacy policy</a>
+        <a [routerLink]="RoutePaths.terms.toUrl()">Terms of use</a>
+    </footer>
 </div>
 
 <!--Modals-->
