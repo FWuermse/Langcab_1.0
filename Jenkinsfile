@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Undeploy UI') {
             steps {
-                if (sh 'sudo docker ps -q -f name=$CN' != null) {
+                if ($"sh 'sudo docker ps -q -f name=$CN'" != null) {
                     if (sh 'sudo docker ps -aq -f status=exited -f name=$CN' == null) {
                         sh 'sudo docker stop $CN && sudo docker rm $CN'
                     }
