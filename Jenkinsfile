@@ -6,7 +6,9 @@ pipeline {
     stages {
         stage('Build dart') {
             steps {
+                sh 'sudo docker stop $(sudo docker ps -a -q)'                
                 sh 'sudo docker build -t $CN .'
+                sh 'sudo docker start $(sudo docker ps -a -q)'
             }
         }
         stage('Deploy') {
