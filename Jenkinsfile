@@ -6,9 +6,9 @@ pipeline {
     stages {
         stage('Build dart') {
             steps {
-                sh 'sudo docker stop $(sudo docker ps -a -q)'                
+                sh 'sudo docker stop langcab_db langcab_api ttt_api'                
                 sh 'sudo docker build -t $CN .'
-                sh 'sudo docker start $(sudo docker ps -a -q)'
+                sh 'sudo docker start langcab_db langcab_api ttt_api'
             }
         }
         stage('Deploy') {
