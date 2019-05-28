@@ -1,4 +1,4 @@
-FROM google/dart AS build
+FROM google/dart:latest AS build
 RUN mkdir -p /webapp
 WORKDIR /app
 ADD pubspec.* /app/
