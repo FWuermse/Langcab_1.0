@@ -2,6 +2,7 @@ FROM google/dart:latest AS build
 RUN mkdir -p /webapp
 WORKDIR /app
 ADD pubspec.* /app/
+RUN pub upgrade
 ADD . /app
 RUN pub get --offline
 RUN pub global activate webdev

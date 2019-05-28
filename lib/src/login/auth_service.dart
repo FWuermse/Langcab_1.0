@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:firebase/firebase.dart' as fb;
 import 'package:firebase/src/auth.dart';
-import 'package:langcab_ui/src/language/language_service.dart';
 import 'package:langcab_ui/src/message/message.dart';
 import 'package:langcab_ui/src/message/message_service.dart';
 
